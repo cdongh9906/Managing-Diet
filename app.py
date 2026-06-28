@@ -15,145 +15,89 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
-.stApp { background: #F7F6F2; }
 
-[data-testid="stSidebar"] { background: #1C1C1E; }
-[data-testid="stSidebar"] * { color: #E8E6E0 !important; }
+/* 메인 앱 배경 테마 연동 */
+.stApp { background: var(--secondary-background-color); }
 
-/* 입력값/선택값은 검정색 */
+/* 사이드바 배경 및 기본 텍스트 테마 연동 */
+[data-testid="stSidebar"] { background: var(--background-color); }
+[data-testid="stSidebar"] * { color: var(--text-color) !important; }
+
+/* 입력값/선택값 색상을 테마(라이트/다크)에 맞춰 자동 전환 */
 [data-testid="stSidebar"] input,
 [data-testid="stSidebar"] textarea,
 [data-testid="stSidebar"] .stNumberInput input,
 [data-testid="stSidebar"] [data-baseweb="select"] span,
 [data-testid="stSidebar"] [data-baseweb="select"] div {
-    color: #111111 !important;
+    color: var(--text-color) !important;
+    background-color: var(--background-color) !important;
 }
 [data-testid="stSidebar"] [data-baseweb="select"] * {
-    color: #111111 !important;
+    color: var(--text-color) !important;
 }
 
 [data-testid="stSidebar"] .stSlider label,
 [data-testid="stSidebar"] .stSelectbox label,
 [data-testid="stSidebar"] .stMultiSelect label,
 [data-testid="stSidebar"] .stNumberInput label {
-    color: #A0A09A !important;
+    color: var(--text-color) !important;
+    opacity: 0.7;
     font-size: 0.78rem !important;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
-[data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: #FFFFFF !important; }
-[data-testid="stSidebar"] hr { border-color: #333333; }
+[data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--text-color) !important; }
+[data-testid="stSidebar"] hr { border-color: rgba(128,128,128,0.2); }
 
-.hero-title { font-size: 2rem; font-weight: 700; color: #1C1C1E; letter-spacing: -0.02em; line-height: 1.2; }
-.hero-sub { font-size: 0.95rem; color: #6B6B6B; margin-top: 4px; margin-bottom: 28px; }
-.section-header { font-size: 1rem; font-weight: 700; color: #1C1C1E; letter-spacing: -0.01em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #E8E6E0; }
+/* 메인 텍스트 테마 연동 */
+.hero-title { font-size: 2rem; font-weight: 700; color: var(--text-color); letter-spacing: -0.02em; line-height: 1.2; }
+.hero-sub { font-size: 0.95rem; color: var(--text-color); opacity: 0.7; margin-top: 4px; margin-bottom: 28px; }
+.section-header { font-size: 1rem; font-weight: 700; color: var(--text-color); letter-spacing: -0.01em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid rgba(128,128,128,0.2); }
 
-.macro-card { background: #1C1C1E; border-radius: 16px; padding: 20px 24px; color: white; margin-bottom: 20px; }
-.macro-card .label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 2px; }
-.macro-card .value { font-size: 2rem; font-weight: 700; color: #FFF; line-height: 1.1; }
-.macro-card .unit  { font-size: 0.85rem; color: #888; }
+/* 매크로 카드 및 칩 테마 자동 대응 */
+.macro-card { background: var(--background-color); border: 1px solid rgba(128,128,128,0.2); border-radius: 16px; padding: 20px 24px; color: var(--text-color); margin-bottom: 20px; }
+.macro-card .label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 2px; }
+.macro-card .value { font-size: 2rem; font-weight: 700; color: var(--text-color); line-height: 1.1; }
+.macro-card .unit  { font-size: 0.85rem; opacity: 0.6; }
 .macro-row { display: flex; gap: 12px; margin-top: 14px; }
-.macro-chip { flex: 1; background: #2C2C2E; border-radius: 10px; padding: 10px 12px; }
-.macro-chip .chip-label { font-size: 0.65rem; color: #888; letter-spacing: 0.08em; text-transform: uppercase; }
+.macro-chip { flex: 1; background: var(--secondary-background-color); border-radius: 10px; padding: 10px 12px; }
+.macro-chip .chip-label { font-size: 0.65rem; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
 .macro-chip .chip-val { font-size: 1.1rem; font-weight: 600; margin-top: 2px; }
 .carb { color: #F4A261; } .prot { color: #6FCF97; } .fat  { color: #7EB8F7; }
 
-.meal-card { background: white; border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; border: 1px solid #ECEAE4; position: relative; }
+/* 개별 식단 카드 테마 자동 대응 */
+.meal-card { background: var(--background-color); border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; border: 1px solid rgba(128,128,128,0.2); position: relative; }
 .meal-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; }
 .tag-breakfast { background: #EDF7F0; color: #2D7A4F; } .tag-lunch { background: #EEF2FF; color: #4A5FC1; } .tag-dinner { background: #FEF4EC; color: #C47A3A; }
-.meal-name   { font-size: 1.05rem; font-weight: 600; color: #1C1C1E; margin-bottom: 4px; }
-.meal-detail { font-size: 0.82rem; color: #888; line-height: 1.5; }
-.meal-kcal   { position: absolute; top: 18px; right: 20px; font-size: 0.8rem; color: #AAA; font-weight: 500; }
+.meal-name   { font-size: 1.05rem; font-weight: 600; color: var(--text-color); margin-bottom: 4px; }
+.meal-detail { font-size: 0.82rem; color: var(--text-color); opacity: 0.7; line-height: 1.5; }
+.meal-kcal   { position: absolute; top: 18px; right: 20px; font-size: 0.8rem; opacity: 0.6; font-weight: 500; }
 
-.edit-panel { background: #F0EEE8; border-radius: 14px; padding: 16px 20px; margin-top: 8px; }
-.edit-panel-title { font-size: 0.8rem; font-weight: 600; color: #555; margin-bottom: 10px; letter-spacing: 0.04em; }
+.edit-panel { background: var(--secondary-background-color); border-radius: 14px; padding: 16px 20px; margin-top: 8px; }
+.edit-panel-title { font-size: 0.8rem; font-weight: 600; opacity: 0.8; margin-bottom: 10px; letter-spacing: 0.04em; }
 
-.empty-state { text-align: center; padding: 80px 20px; color: #AAA; }
+.empty-state { text-align: center; padding: 80px 20px; opacity: 0.6; color: var(--text-color); }
 .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
 .empty-state .msg  { font-size: 1rem; }
 
 .stButton button { border-radius: 10px !important; font-family: 'Noto Sans KR', sans-serif !important; font-weight: 500 !important; }
 
-/* ✅ 캘린더형 주간표 */
+/* ✅ 캘린더형 주간표 테마 자동 대응 */
 .week-cal-wrap { margin-top: 8px; }
-.week-cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(180px, 1fr));
-    gap: 10px;
-}
-.day-card {
-    background: #FFFFFF;
-    border: 1px solid #E9E6DF;
-    border-radius: 12px;
-    padding: 10px 10px 12px 10px;
-    min-height: 360px;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
-}
-.day-head {
-    border-bottom: 1px solid #F0EDE6;
-    padding-bottom: 8px;
-    margin-bottom: 8px;
-}
-.day-title {
-    font-size: 0.93rem;
-    font-weight: 700;
-    color: #262626;
-}
-.day-kcal {
-    font-size: 0.75rem;
-    color: #8A8A8A;
-    margin-top: 2px;
-}
-.meal-block {
-    background: #FAF9F6;
-    border: 1px solid #F1EEE8;
-    border-radius: 8px;
-    padding: 8px;
-    margin-bottom: 8px;
-}
-.meal-type {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-    color: #666;
-    margin-bottom: 4px;
-}
-.meal-name-mini {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #222;
-    margin-bottom: 4px;
-    line-height: 1.35;
-}
-.material-line {
-    font-size: 0.76rem;
-    color: #5F5F5F;
-    line-height: 1.35;
-}
-.meal-kcal-mini {
-    margin-top: 4px;
-    font-size: 0.75rem;
-    color: #7B7B7B;
-    font-weight: 600;
-}
-.cheat-box {
-    background: #FFF5E8;
-    border: 1px solid #F5D7AB;
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 0.82rem;
-    color: #9A5D00;
-    line-height: 1.4;
-}
-@media (max-width: 1400px) {
-    .week-cal-grid { grid-template-columns: repeat(4, minmax(180px, 1fr)); }
-}
-@media (max-width: 1000px) {
-    .week-cal-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
-}
-@media (max-width: 640px) {
-    .week-cal-grid { grid-template-columns: 1fr; }
-}
+.week-cal-grid { display: grid; grid-template-columns: repeat(7, minmax(180px, 1fr)); gap: 10px; }
+.day-card { background: var(--background-color); border: 1px solid rgba(128,128,128,0.2); border-radius: 12px; padding: 10px 10px 12px 10px; min-height: 360px; box-shadow: 0 1px 0 rgba(0,0,0,0.02); }
+.day-head { border-bottom: 1px solid rgba(128,128,128,0.2); padding-bottom: 8px; margin-bottom: 8px; }
+.day-title { font-size: 0.93rem; font-weight: 700; color: var(--text-color); }
+.day-kcal { font-size: 0.75rem; opacity: 0.6; margin-top: 2px; }
+.meal-block { background: var(--secondary-background-color); border: 1px solid rgba(128,128,128,0.1); border-radius: 8px; padding: 8px; margin-bottom: 8px; }
+.meal-type { font-size: 0.72rem; font-weight: 700; letter-spacing: .04em; opacity: 0.7; margin-bottom: 4px; }
+.meal-name-mini { font-size: 0.82rem; font-weight: 700; color: var(--text-color); margin-bottom: 4px; line-height: 1.35; }
+.material-line { font-size: 0.76rem; opacity: 0.8; line-height: 1.35; }
+.meal-kcal-mini { margin-top: 4px; font-size: 0.75rem; opacity: 0.6; font-weight: 600; }
+.cheat-box { background: rgba(245, 215, 171, 0.15); border: 1px solid #F5D7AB; border-radius: 8px; padding: 10px; font-size: 0.82rem; color: #9A5D00; line-height: 1.4; }
+@media (max-width: 1400px) { .week-cal-grid { grid-template-columns: repeat(4, minmax(180px, 1fr)); } }
+@media (max-width: 1000px) { .week-cal-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); } }
+@media (max-width: 640px) { .week-cal-grid { grid-template-columns: 1fr; } }
 </style>
 """, unsafe_allow_html=True)
 
@@ -313,7 +257,7 @@ def portion_to_lines(portion_text: str):
     items = [x.strip() for x in str(portion_text).split(",") if x.strip()]
     if not items:
         return ["정보 없음"]
-    return items  # ✅ 생략 없이 전부 반환
+    return items
 
 # ── 세션 초기화 ───────────────────────────────────────────────────────────────
 defaults = {
