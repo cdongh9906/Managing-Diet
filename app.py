@@ -19,10 +19,6 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
 /* 메인 앱 배경 테마 연동 */
 .stApp { background-color: var(--background-color) !important; }
 
-/* 🚨 모바일 사이드바 투명도 완벽 방어 (불투명도 100% 고정) */
-[data-testid="stSidebar"] { background-color: var(--background-color) !important; opacity: 1 !important; z-index: 999999; }
-[data-testid="stSidebar"] > div:first-child { background-color: var(--background-color) !important; opacity: 1 !important; }
-
 /* 사이드바 텍스트 기본색 */
 [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--text-color) !important; }
 [data-testid="stSidebar"] hr { border-color: rgba(128,128,128,0.2); }
