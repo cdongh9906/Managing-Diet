@@ -17,10 +17,11 @@ st.markdown("""
 html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
 
 /* 메인 앱 배경 테마 연동 */
-.stApp { background: var(--secondary-background-color); }
+.stApp { background-color: var(--background-color) !important; }
 
-/* 사이드바 배경 및 기본 텍스트 테마 연동 */
-[data-testid="stSidebar"] { background: var(--background-color); }
+/* 사이드바 배경 및 기본 텍스트 테마 연동 (모바일 투명도 방지) */
+[data-testid="stSidebar"] { background-color: var(--secondary-background-color) !important; }
+[data-testid="stSidebar"] > div:first-child { background-color: var(--secondary-background-color) !important; }
 [data-testid="stSidebar"] * { color: var(--text-color) !important; }
 
 /* 입력값/선택값 색상을 테마(라이트/다크)에 맞춰 자동 전환 */
@@ -55,12 +56,12 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
 .section-header { font-size: 1rem; font-weight: 700; color: var(--text-color); letter-spacing: -0.01em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid rgba(128,128,128,0.2); }
 
 /* 매크로 카드 및 칩 테마 자동 대응 */
-.macro-card { background: var(--background-color); border: 1px solid rgba(128,128,128,0.2); border-radius: 16px; padding: 20px 24px; color: var(--text-color); margin-bottom: 20px; }
+.macro-card { background: var(--secondary-background-color); border: 1px solid rgba(128,128,128,0.2); border-radius: 16px; padding: 20px 24px; color: var(--text-color); margin-bottom: 20px; }
 .macro-card .label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-bottom: 2px; }
 .macro-card .value { font-size: 2rem; font-weight: 700; color: var(--text-color); line-height: 1.1; }
 .macro-card .unit  { font-size: 0.85rem; opacity: 0.6; }
 .macro-row { display: flex; gap: 12px; margin-top: 14px; }
-.macro-chip { flex: 1; background: var(--secondary-background-color); border-radius: 10px; padding: 10px 12px; }
+.macro-chip { flex: 1; background: var(--background-color); border-radius: 10px; padding: 10px 12px; border: 1px solid rgba(128,128,128,0.1); }
 .macro-chip .chip-label { font-size: 0.65rem; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
 .macro-chip .chip-val { font-size: 1.1rem; font-weight: 600; margin-top: 2px; }
 .carb { color: #F4A261; } .prot { color: #6FCF97; } .fat  { color: #7EB8F7; }
@@ -68,7 +69,7 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
 /* 개별 식단 카드 테마 자동 대응 */
 .meal-card { background: var(--background-color); border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; border: 1px solid rgba(128,128,128,0.2); position: relative; }
 .meal-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; }
-.tag-breakfast { background: #EDF7F0; color: #2D7A4F; } .tag-lunch { background: #EEF2FF; color: #4A5FC1; } .tag-dinner { background: #FEF4EC; color: #C47A3A; }
+.tag-breakfast { background: rgba(45,122,79,0.1); color: #2D7A4F; } .tag-lunch { background: rgba(74,95,193,0.1); color: #4A5FC1; } .tag-dinner { background: rgba(196,122,58,0.1); color: #C47A3A; }
 .meal-name   { font-size: 1.05rem; font-weight: 600; color: var(--text-color); margin-bottom: 4px; }
 .meal-detail { font-size: 0.82rem; color: var(--text-color); opacity: 0.7; line-height: 1.5; }
 .meal-kcal   { position: absolute; top: 18px; right: 20px; font-size: 0.8rem; opacity: 0.6; font-weight: 500; }
@@ -94,7 +95,7 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
 .meal-name-mini { font-size: 0.82rem; font-weight: 700; color: var(--text-color); margin-bottom: 4px; line-height: 1.35; }
 .material-line { font-size: 0.76rem; opacity: 0.8; line-height: 1.35; }
 .meal-kcal-mini { margin-top: 4px; font-size: 0.75rem; opacity: 0.6; font-weight: 600; }
-.cheat-box { background: rgba(245, 215, 171, 0.15); border: 1px solid #F5D7AB; border-radius: 8px; padding: 10px; font-size: 0.82rem; color: #9A5D00; line-height: 1.4; }
+.cheat-box { background: rgba(245, 215, 171, 0.15); border: 1px solid rgba(245, 215, 171, 0.5); border-radius: 8px; padding: 10px; font-size: 0.82rem; color: #D48000; line-height: 1.4; }
 @media (max-width: 1400px) { .week-cal-grid { grid-template-columns: repeat(4, minmax(180px, 1fr)); } }
 @media (max-width: 1000px) { .week-cal-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); } }
 @media (max-width: 640px) { .week-cal-grid { grid-template-columns: 1fr; } }
