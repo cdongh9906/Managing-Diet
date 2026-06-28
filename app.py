@@ -41,6 +41,10 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
     border: 1px solid rgba(128, 128, 128, 0.3) !important;
     border-radius: 6px;
 }
+[data-testid="stSidebar"] [data-baseweb="select"] input {
+    display: none !important;
+    pointer-events: none !important;
+}
 
 /* 메인 텍스트 테마 연동 */
 .hero-title { font-size: 2rem; font-weight: 700; color: var(--text-color); letter-spacing: -0.02em; line-height: 1.2; }
