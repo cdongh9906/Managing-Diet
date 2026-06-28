@@ -19,36 +19,36 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
 /* 메인 앱 배경 테마 연동 */
 .stApp { background-color: var(--background-color) !important; }
 
-/* 사이드바 배경 및 기본 텍스트 테마 연동 (모바일 투명도 방지) */
-[data-testid="stSidebar"] { background-color: var(--secondary-background-color) !important; }
-[data-testid="stSidebar"] > div:first-child { background-color: var(--secondary-background-color) !important; }
-[data-testid="stSidebar"] * { color: var(--text-color) !important; }
-
-/* 입력값/선택값 색상을 테마(라이트/다크)에 맞춰 자동 전환 */
-[data-testid="stSidebar"] input,
-[data-testid="stSidebar"] textarea,
-[data-testid="stSidebar"] .stNumberInput input,
-[data-testid="stSidebar"] [data-baseweb="select"] span,
-[data-testid="stSidebar"] [data-baseweb="select"] div {
-    color: var(--text-color) !important;
+/* 🚨 모바일 사이드바 투명도 완벽 방어 (불투명도 100% 강제) */
+section[data-testid="stSidebar"],
+section[data-testid="stSidebar"] > div:first-child {
     background-color: var(--background-color) !important;
-}
-[data-testid="stSidebar"] [data-baseweb="select"] * {
-    color: var(--text-color) !important;
+    opacity: 1 !important;
+    z-index: 999999 !important;
 }
 
-[data-testid="stSidebar"] .stSlider label,
-[data-testid="stSidebar"] .stSelectbox label,
-[data-testid="stSidebar"] .stMultiSelect label,
-[data-testid="stSidebar"] .stNumberInput label {
+/* 사이드바 텍스트 기본색 */
+[data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--text-color) !important; }
+[data-testid="stSidebar"] hr { border-color: rgba(128,128,128,0.2); }
+[data-testid="stSidebar"] label {
     color: var(--text-color) !important;
     opacity: 0.7;
     font-size: 0.78rem !important;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
-[data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--text-color) !important; }
-[data-testid="stSidebar"] hr { border-color: rgba(128,128,128,0.2); }
+
+/* 🚨 입력창 및 선택박스 배경색 분리 (라이트모드 흰색 겹침 해결) */
+input, 
+textarea, 
+.stNumberInput input,
+div[data-baseweb="select"] > div,
+div[data-baseweb="select"] span {
+    background-color: var(--secondary-background-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid rgba(128, 128, 128, 0.3) !important;
+    border-radius: 6px;
+}
 
 /* 메인 텍스트 테마 연동 */
 .hero-title { font-size: 2rem; font-weight: 700; color: var(--text-color); letter-spacing: -0.02em; line-height: 1.2; }
