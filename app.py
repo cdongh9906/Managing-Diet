@@ -285,7 +285,7 @@ for k, v in {
 with st.sidebar:
     st.markdown("## 📊 나의 신체 데이터")
     st.markdown("---")
-    gender = st.selectbox("성별", ["남성", "여성"])
+    gender = st.selectbox("성별", ["남성", "여성"], filter_mode="off")
     age = st.number_input("나이", min_value=15, max_value=100, value=25)
 
     height_col1, height_col2 = st.columns([3, 1])
