@@ -19,13 +19,9 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
 /* 메인 앱 배경 테마 연동 */
 .stApp { background-color: var(--background-color) !important; }
 
-/* 🚨 모바일 사이드바 투명도 완벽 방어 (불투명도 100% 강제) */
-section[data-testid="stSidebar"],
-section[data-testid="stSidebar"] > div:first-child {
-    background-color: var(--background-color) !important;
-    opacity: 1 !important;
-    z-index: 999999 !important;
-}
+/* 🚨 모바일 사이드바 투명도 완벽 방어 (불투명도 100% 고정) */
+[data-testid="stSidebar"] { background-color: var(--background-color) !important; opacity: 1 !important; z-index: 999999; }
+[data-testid="stSidebar"] > div:first-child { background-color: var(--background-color) !important; opacity: 1 !important; }
 
 /* 사이드바 텍스트 기본색 */
 [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--text-color) !important; }
@@ -38,13 +34,13 @@ section[data-testid="stSidebar"] > div:first-child {
     text-transform: uppercase;
 }
 
-/* 🚨 입력창 및 선택박스 배경색 분리 (라이트모드 흰색 겹침 해결) */
-input, 
-textarea, 
-.stNumberInput input,
-div[data-baseweb="select"] > div,
-div[data-baseweb="select"] span {
-    background-color: var(--secondary-background-color) !important;
+/* 🚨 사이드바 입력창만 타겟팅 (메인 영역 절대 침범 안 함!) */
+[data-testid="stSidebar"] input,
+[data-testid="stSidebar"] textarea,
+[data-testid="stSidebar"] .stNumberInput input,
+[data-testid="stSidebar"] div[data-baseweb="select"] > div,
+[data-testid="stSidebar"] div[data-baseweb="select"] span {
+    background-color: var(--secondary-background-color) !important; /* 옅은 회색 적용 */
     color: var(--text-color) !important;
     border: 1px solid rgba(128, 128, 128, 0.3) !important;
     border-radius: 6px;
