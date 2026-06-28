@@ -41,9 +41,9 @@ html, body, [class*="css"] { font-family: 'Noto Sans KR', sans-serif; }
     border: 1px solid rgba(128, 128, 128, 0.3) !important;
     border-radius: 6px;
 }
-[data-testid="stSidebar"] [data-baseweb="select"] input {
-    display: none !important;
+[data-testid="stSidebar"] [data-baseweb="select"] input[aria-autocomplete="list"] {
     pointer-events: none !important;
+    caret-color: transparent !important;
 }
 
 /* 메인 텍스트 테마 연동 */
